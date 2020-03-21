@@ -18,7 +18,7 @@ class CreateOurTables extends Migration
             $table->string('role');
         });
 
-        Schema::create('user_has_role', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('user_id');
 
@@ -33,7 +33,7 @@ class CreateOurTables extends Migration
             $table->string('permission');
         });
 
-        Schema::create('role_has_permission', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('permission_id');
 
@@ -50,7 +50,7 @@ class CreateOurTables extends Migration
 
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
         });
 
         Schema::create('courses', function (Blueprint $table) {
