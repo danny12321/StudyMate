@@ -61,7 +61,7 @@ class CreateOurTables extends Migration
             $table->decimal('study_points', 4, 1);
             $table->string('path_to_zip')->nullable();
             $table->integer('block');
-            $table->timestamp('deadline');
+            $table->timestamp('deadline')->nullable();
             $table->boolean('deadline_done');
 
             $table->foreign('assessment_type')->references('id')->on('assessment_types');

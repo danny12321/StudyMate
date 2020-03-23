@@ -8,7 +8,8 @@
         @if(count($courses))
         @foreach ($courses as $course)
         <div>
-            {{$courses->name}}
+            {{$course->name}}
+            <a href="{{ route('admin_course_edit', ['course' => $course->id]) }}">edit</a>
         </div>
         @endforeach
         @else
