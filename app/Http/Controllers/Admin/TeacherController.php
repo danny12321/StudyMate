@@ -24,7 +24,7 @@ class TeacherController extends Controller
     // Post
     public function create() {
         $teacher = new Teacher();
-        $teacher->name = encrypt(request('name'));
+        $teacher->name = request('name');
         $teacher->save();
         return redirect()->route('admin_teacher');
     }
