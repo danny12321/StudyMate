@@ -11,10 +11,11 @@ class DeadlineController extends Controller
     {
         // $this->middleware('auth');
     }
-    
+
     //
-    public function index() {
-        $courses = Course::take(3)->get();
+    public function index()
+    {
+        $courses = Course::all();
 
         return view('deadline.index', [
             'courses' => $courses
