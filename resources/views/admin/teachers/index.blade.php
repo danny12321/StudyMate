@@ -9,7 +9,7 @@
         @foreach ($teachers as $teacher)
         <div>
             {{$teacher->name}}
-            <a href="{{route('admin_teacher_edit', ['id' => $teacher->id])}}">edit</a>
+            <a href="{{route('admin_teacher_edit', ['teacher' => $teacher->id])}}">edit</a>
         </div>
         @endforeach
         @else
