@@ -30,17 +30,24 @@ class TeacherController extends Controller
     }
 
     // Get
-    public function edit(){
-
+    public function edit($id) {
+        return view('admin.teachers.edit', [
+            'teacher' => Teacher::find($id)
+        ]);
     }
 
     // Put
-    public function update() {
+    public function update($id) {
+        $teacher = Teacher::find($id);
+        $teacher->name = request('name');
+        $teacher->save();
 
+        return redirect()->route('admin_teacher');
     }
 
     // Delete
-    public function destroy(){
-
+    public function destroy($id) {
+        Teacher::find($id)->delete();
+        return redirect()->route('admin_teacher');
     }
 }

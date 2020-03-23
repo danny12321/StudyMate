@@ -4,7 +4,7 @@
     <div class="container l-admin-teachers-new">
         <h1>Docent toevoegen</h1>
 
-        <form method="POST" action="{{ route('admin_teacher__create') }}">
+        <form method="POST" action="{{ route('admin_teacher_create') }}">
             @csrf
 
             <label for="name">Naam</label>
