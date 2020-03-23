@@ -29,6 +29,17 @@ class CoursesController extends Controller
 
     // Post
     public function create() {
+        return request()->validate([
+            'name' => ['required'],
+            'coordinator' => ['required'],
+            'path_to_zip' => ['required'],
+            'assessment_type' => ['required'],
+            'study_points' => ['required'],
+            'block' => ['required'],
+            'deadline' => ['required'],
+            'deadline_done' => ['required'],
+        ]);
+
         $course = new Course();
         $course->name = request('name');
         $course->coordinator = request('coordinator');
@@ -36,15 +47,17 @@ class CoursesController extends Controller
         $course->assessment_type = request('assessmenttype');
         $course->study_points = request('studypoints');
         $course->block = request('block');
-        $course->deadline = request('deadline');
+        $course->deadline = null;
         $course->deadline_done = false;
         $course->save();
         return redirect()->route('admin_teacher');
     }
 
     // Get
-    public function edit(){
-
+    public function edit(Course $course){
+        return view('admin.courses.edit', [
+            'course' => $course
+        ]);
     }
 
     // Put
