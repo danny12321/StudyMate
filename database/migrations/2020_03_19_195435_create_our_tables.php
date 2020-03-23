@@ -102,14 +102,14 @@ class CreateOurTables extends Migration
     public function down()
     {
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('user_has_role');
+        Schema::dropIfExists('user_role');
         Schema::dropIfExists('permissions');
-        Schema::dropIfExists('role_has_permission');
+        Schema::dropIfExists('role_permission');
         Schema::dropIfExists('assessment_types');
         Schema::dropIfExists('teachers');
         Schema::dropIfExists('courses');
         Schema::dropIfExists('tags');
-        Schema::dropIfExists('course_has_tag');
-        Schema::dropIfExists('course_has_teacher');
+        Schema::dropIfExists('course_tag');
+        Schema::dropIfExists('course_teacher');
     }
 }
