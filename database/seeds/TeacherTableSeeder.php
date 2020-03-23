@@ -13,11 +13,11 @@ class TeacherTableSeeder extends Seeder
     public function run()
     {
         Teacher::create([
-            'name' => encrypt('Rick Meijer'),
+            'name' => 'Rick Meijer',
         ]);
 
         Teacher::create([
-            'name' => encrypt('Gerard Joling'),
+            'name' => 'Gerard Joling',
         ]);
     }
 }

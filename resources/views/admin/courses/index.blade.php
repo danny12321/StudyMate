@@ -9,7 +9,7 @@
         @foreach ($courses as $course)
         <div>
             {{$course->name}}
-            <a href="{{ route('admin_teacher_edit', ['course' => $couese->id]) }}">edit</a>
+            <a href="{{ route('admin_course_edit', ['course' => $course->id]) }}">edit</a>
         </div>
         @endforeach
         @else

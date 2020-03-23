@@ -31,7 +31,9 @@ Route::delete('/admin/teacher/{teacher}', 'Admin\TeacherController@destroy')->na
 Route::get('/admin/courses', 'Admin\CoursesController@index')->name('admin_course');
 Route::get('/admin/course/new', 'Admin\CoursesController@new')->name('admin_course_new');
 Route::post('/admin/course/create', 'Admin\CoursesController@create')->name('admin_course_create');
-Route::get('/admin/course/<id>/edit', 'Admin\CoursesController@edit')->name('admin_course_edit');
+Route::get('/admin/course/{course}/edit', 'Admin\CoursesController@edit')->name('admin_course_edit');
+Route::put('/admin/course/{course}', 'Admin\CoursesController@update')->name('admin_course_update');
+Route::delete('/admin/course/{course}', 'Admin\CoursesController@destroy')->name('admin_course_delete');
 
 
 Route::get('/deadline', 'DeadlineController@index')->name('deadline');
