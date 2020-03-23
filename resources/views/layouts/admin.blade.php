@@ -22,7 +22,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Docenten</a>
+                        <a class="nav-link" href="{{ route('admin_teacher') }}">Docenten</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Vakken</a>

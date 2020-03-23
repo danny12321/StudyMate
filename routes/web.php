@@ -21,4 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
+Route::get('/admin/teachers', 'Admin\TeacherController@index')->name('admin_teacher');
+Route::get('/admin/teacher/new', 'Admin\TeacherController@new')->name('admin_teacher__new');
+Route::post('/admin/teacher/create', 'Admin\TeacherController@create')->name('admin_teacher__create');
+Route::get('/admin/teacher/<id>/edit', 'Admin\TeacherController@edit')->name('admin_teacher__edit');
+
+
 Route::get('/deadline', 'DeadlineController@index')->name('deadline');
