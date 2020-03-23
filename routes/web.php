@@ -26,5 +26,10 @@ Route::get('/admin/teacher/new', 'Admin\TeacherController@new')->name('admin_tea
 Route::post('/admin/teacher/create', 'Admin\TeacherController@create')->name('admin_teacher__create');
 Route::get('/admin/teacher/<id>/edit', 'Admin\TeacherController@edit')->name('admin_teacher__edit');
 
+Route::get('/admin/courses', 'Admin\CoursesController@index')->name('admin_course');
+Route::get('/admin/course/new', 'Admin\CoursesController@new')->name('admin_course_new');
+Route::post('/admin/course/create', 'Admin\CoursesController@create')->name('admin_course_create');
+Route::get('/admin/course/<id>/edit', 'Admin\CoursesController@edit')->name('admin_course_edit');
+
 
 Route::get('/deadline', 'DeadlineController@index')->name('deadline');

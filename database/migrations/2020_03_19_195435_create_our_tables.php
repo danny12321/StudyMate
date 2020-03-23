@@ -59,8 +59,8 @@ class CreateOurTables extends Migration
             $table->unsignedBigInteger('coordinator');
             $table->unsignedBigInteger('assessment_type');
             $table->decimal('study_points', 4, 1);
-            $table->string('path_to_zip');
-            $table->string('block');
+            $table->string('path_to_zip')->nullable();
+            $table->integer('block');
             $table->timestamp('deadline');
             $table->boolean('deadline_done');
 
@@ -73,7 +73,7 @@ class CreateOurTables extends Migration
             $table->string('tag');
         });
 
-        Schema::create('course_has_tag', function (Blueprint $table) {
+        Schema::create('course_tag', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('tag_id');
 
@@ -83,7 +83,7 @@ class CreateOurTables extends Migration
             $table->foreign('tag_id')->references('id')->on('tags');
         });
 
-        Schema::create('course_has_teacher', function (Blueprint $table) {
+        Schema::create('course_teacher', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('teacher_id');
 
