@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Courses;
 
 class Teacher extends Model
 {
@@ -18,5 +19,9 @@ class Teacher extends Model
 
     public function setNameAttribute($value) {
         $this->attributes['name'] = encrypt($value);
+    }
+
+    public function courses() {
+        return $this->belongsToMany(Courses::class);
     }
 }

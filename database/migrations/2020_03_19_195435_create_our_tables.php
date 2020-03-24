@@ -89,8 +89,8 @@ class CreateOurTables extends Migration
 
             $table->primary(['course_id', 'teacher_id']);
 
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
         });
     }
 

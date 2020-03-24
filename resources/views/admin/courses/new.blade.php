@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+
+
     <div class="container l-admin-courses-new">
         <h1>Vak toevoegen</h1>
         
@@ -70,7 +72,26 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="teachers">Docenten</label>
+                <select class="form-control @error('teachers') is-invalid @enderror" name="teachers[]" id="teachers" multiple>
+                    @foreach($teachers as $teacher)
+                        <option value="{{ $teacher->id }}">{{ $teacher->name}}</option>
+                    @endforeach
+                </select>
+
+                @error('teachers') 
+                    <div class="invalid-feedback">
+                        {{ $errors->first("teachers") }}
+                    </div>
+                @enderror
+            </div>
+
             <button type="submit" class="btn btn-primary">Opslaan</button>
         </form>
     </div>
+
+
+
+
 @endsection

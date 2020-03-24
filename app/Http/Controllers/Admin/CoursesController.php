@@ -34,6 +34,7 @@ class CoursesController extends Controller
             'assessmenttype' => ['required'],
             'studypoints' => ['required'],
             'block' => ['required'],
+            'teachers' => 'required|array'
         ]);
 
         $course = new Course();
@@ -46,6 +47,7 @@ class CoursesController extends Controller
         $course->deadline = null;
         $course->deadline_done = false;
         $course->save();
+        $course->teachers()->attach(request('teachers'));
 
         return redirect()->route('admin_course');
     }
@@ -61,13 +63,14 @@ class CoursesController extends Controller
 
     // Put
     public function update(Course $course) {
-
+        
         request()->validate([
             'name' => ['required'],
             'coordinator' => ['required'],
             'assessmenttype' => ['required'],
             'studypoints' => ['required'],
             'block' => ['required'],
+            'teachers' => 'required|array'
         ]);
         
         $course->name = request('name');
@@ -79,6 +82,7 @@ class CoursesController extends Controller
         $course->deadline = null;
         $course->deadline_done = false;
         $course->save();
+        $course->teachers()->sync(request('teachers'));
 
         return redirect()->route('admin_course');
     }

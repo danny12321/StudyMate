@@ -71,6 +71,21 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="teachers">Docenten</label>
+                <select class="form-control @error('teachers') is-invalid @enderror" name="teachers[]" id="teachers" multiple>
+                    @foreach($teachers as $teacher)
+                        <option value="{{ $teacher->id }}" @if($course->teachers->contains($teacher->id)) selected='selected' @endif>{{ $teacher->name}}</option>
+                    @endforeach
+                </select>
+
+                @error('teachers') 
+                    <div class="invalid-feedback">
+                        {{ $errors->first("teachers") }}
+                    </div>
+                @enderror
+            </div>
+
             <button type="submit" class="btn btn-primary">Opslaan</button>
 
             <button class="btn btn-danger" form="deleteform" type="submit">Verwijderen</button>
