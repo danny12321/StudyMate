@@ -1,0 +1,31 @@
+.m-progress {
+    &__block {
+        display: flex;
+
+        &__content {
+            width: 50px;
+        }
+
+        &__period {
+            margin-left: 10px;
+        }
+
+        
+    }
+
+    &__year {
+        margin: 30px 0;
+        border: 1px solid black;
+
+        &__block {
+            display: flex;
+            &__content {
+                width: 50px;
+            }
+    
+            &__period {
+                margin-left: 10px;
+            }
+        }
+    }
+}
