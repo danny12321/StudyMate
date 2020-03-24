@@ -29,7 +29,16 @@
     @foreach ($courses as $course)
         <div class="row">
             <div class="col-md-12">
-                <h2><b>{{$course->name}}</b> - @if($course->deadline)<code>{{$course->deadline}}</code> @else <a href="">Voeg deadline toe</a> @endif</h2>
+                <h2>
+                    <b>{{$course->name}}</b> - 
+                    <a href="{{route('deadline_course_edit', ['course'=> $course->id])}}">
+                        @if($course->deadline)
+                            <code>{{$course->deadline}}</code> 
+                        @else 
+                            Voeg deadline toe 
+                        @endif
+                    </a>
+                </h2>
             </div>
         </div>
 

@@ -22,4 +22,22 @@ class DeadlineController extends Controller
             'courses' => $courses
         ]);
     }
+
+    // Get
+    public function edit(Course $course)
+    {
+        return view('deadline.edit', [
+            'course' => $course
+        ]);
+    }
+
+    // Put
+    public function update(Course $course)
+    {
+        $course->update(request()->validate([
+            'deadline' => ['required'],
+        ]));
+
+        return redirect()->route('deadline');
+    }
 }
