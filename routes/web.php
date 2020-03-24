@@ -39,3 +39,4 @@ Route::delete('/admin/course/{course}', 'Admin\CoursesController@destroy')->name
 Route::get('/deadline', 'DeadlineController@index')->name('deadline');
 Route::get('/deadline/course/{course}/edit', 'DeadlineController@edit')->name('deadline_course_edit');
 Route::put('/deadline/course/{course}', 'DeadlineController@update')->name('deadline_course_update');
+Route::put('/deadline/course/{course}/done', 'DeadlineController@done')->name('deadline_coures_done');

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Zelf kijken? Open hier de pagina</h1>
-        {{-- <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ url('/') }}&size=220x220&margin=10" alt="qrcode"> --}}
+        {{-- <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ route('dashboard') }}&size=220x220&margin=10" alt="qrcode"> --}}
 
         <h1>Voortgangsmeter</h1>
 
@@ -48,4 +48,6 @@
             @endfor
         </div>
     </div>
+
+    
 @endsection

@@ -18,8 +18,23 @@
                     </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Opslaan</button>
 
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <select class="form-control @error('tags') is-invalid @enderror" name="tags[]" id="tags" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}" @if($course->tags->contains($tag->id)) selected='selected' @endif>{{ $tag->tag}}</option>
+                    @endforeach
+                </select>
+
+                @error('tags') 
+                    <div class="invalid-feedback">
+                        {{ $errors->first("tags") }}
+                    </div>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary">Opslaan</button>
         </form>
     </div>
 @endsection

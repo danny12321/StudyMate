@@ -9,6 +9,10 @@ class Course extends Model
     public $guarded = [];
     public $timestamps = false;
 
+    public function assessment() {
+        return $this->hasOne(AssessmentType::class, 'id', 'assessment_type');
+    }
+
     public function coordinator()
     {
         return $this->hasOne(Teacher::class, 'id');
