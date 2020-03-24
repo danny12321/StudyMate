@@ -15,8 +15,9 @@ class DeadlineController extends Controller
     //
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::get();
 
+        
         return view('deadline.index', [
             'courses' => $courses
         ]);

@@ -38,7 +38,7 @@ class CoursesController extends Controller
 
         $course = new Course();
         $course->name = request('name');
-        $course->coordinator = request('coordinator');
+        $course->coordinator_id = request('coordinator');
         $course->path_to_zip = null;
         $course->assessment_type = request('assessmenttype');
         $course->study_points = request('studypoints');
@@ -71,7 +71,7 @@ class CoursesController extends Controller
         ]);
         
         $course->name = request('name');
-        $course->coordinator = request('coordinator');
+        $course->coordinator_id = request('coordinator');
         $course->path_to_zip = null;
         $course->assessment_type = request('assessmenttype');
         $course->study_points = request('studypoints');

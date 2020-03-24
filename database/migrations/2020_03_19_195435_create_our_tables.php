@@ -56,7 +56,7 @@ class CreateOurTables extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('coordinator');
+            $table->unsignedBigInteger('coordinator_id');
             $table->unsignedBigInteger('assessment_type');
             $table->decimal('study_points', 4, 1);
             $table->string('path_to_zip')->nullable();
@@ -65,7 +65,7 @@ class CreateOurTables extends Migration
             $table->boolean('deadline_done');
 
             $table->foreign('assessment_type')->references('id')->on('assessment_types');
-            $table->foreign('coordinator')->references('id')->on('teachers');
+            $table->foreign('coordinator_id')->references('id')->on('teachers');
         });
 
         Schema::create('tags', function (Blueprint $table) {

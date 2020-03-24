@@ -8,6 +8,10 @@ class Course extends Model
 {
     public $timestamps = false;
 
+    public function coordinator()
+    {
+        return $this->hasOne(Teacher::class, 'id');
+    }
 
     public function teachers()
     {
