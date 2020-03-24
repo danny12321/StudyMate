@@ -79,8 +79,8 @@ class CreateOurTables extends Migration
 
             $table->primary(['course_id', 'tag_id']);
 
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
 
         Schema::create('course_teacher', function (Blueprint $table) {
