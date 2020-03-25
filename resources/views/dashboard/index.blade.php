@@ -23,6 +23,19 @@
         </div> --}}
 
         <div class="m-progress">
+
+            @if ((($maxBlock - 1) % 4) + 1 !== 4)
+            <div class="m-progress__year">
+
+                <div class="m-progress__year__block">
+                    <div class="m-progress__year__block__content">
+                        <h3>Blok</h3>
+                    </div>
+                    <div class="m-progress__year__block__period">
+                        <h3>Periode</h3>
+                    </div>
+                </div>
+            @endif
             
             @for ($block = $maxBlock; $block > 0; $block--)
                 {{-- Clac the period --}}
@@ -38,7 +51,6 @@
                             </div>
                         </div>
                 @endif
-                        
                         <div class="m-progress__year__block">
                             <div class="m-progress__year__block__content">
                                 <span>{{$block}}</span>
