@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DeadlineController extends Controller
 {
@@ -68,15 +69,22 @@ class DeadlineController extends Controller
     }
 
     // Put
-    public function update(Course $course)
+    public function update(Request $request, $id)
     {
+        $course = Course::findOrFail($id);
+
         request()->validate([
             'deadline' => ['required'],
             'tags' => 'array'
         ]);
 
+        $name = $course->name . '-' . $course->id . '.zip';
+        $request->file('attachment')->storeAs('attachments', $name);
+
+
         $course->update([
-            'deadline'=>request('deadline')
+            'deadline'=>request('deadline'),
+            'path_to_zip' => $name
         ]);
 
         $course->tags()->sync(request('tags'));
@@ -90,5 +98,11 @@ class DeadlineController extends Controller
         ]);
 
         return redirect()->route('deadline');
+    }
+
+    public function download(Course $course) {
+        $path = $course->path_to_zip;
+
+        return Storage::download('attachments/' . $path);
     }
 }

@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Deadline instellen {{ $course->name}}</h1>
         
-        <form method="POST" action="{{ route('deadline_course_update', ['course' => $course->id]) }}">
+        <form method="POST" action="{{ route('deadline_course_update', ['course' => $course->id]) }}" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 
@@ -33,6 +33,19 @@
                     </div>
                 @enderror
             </div>
+
+            @if ($course->assessment->type === "Assessment")
+            <div class="form-group">
+                <label for="attachment">Bijlage</label>
+                <input class="form-control @error('attachment') is-invalid @enderror" accept=".zip" type="file" name="attachment" id="attachment">
+
+                @error('attachment') 
+                    <div class="invalid-feedback">
+                        {{ $errors->first("attachment") }}
+                    </div>
+                @enderror
+            </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">Opslaan</button>
         </form>
