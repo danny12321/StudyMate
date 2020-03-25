@@ -58,8 +58,8 @@
                             <a class="btn btn-link" href="{{route('deadline_course_edit', ['course'=> $course->id])}}">Wijzigen</a>
                             
                             @if($course->deadline_done)
-                                <h2><span class="badge badge-secondary badge-success">Done</span></h2>
-                            @else
+                                <button class="btn btn-success w-100">Af</button>
+                                @else
                                 <button class="btn btn-primary" type="submit">Aftekenen</button>
                             @endif
                         </div>
