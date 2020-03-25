@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class StudentMiddleware
 {
@@ -15,6 +16,11 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if ($request->user() && Auth::user()->roles->pluck('role')[0] == "student")
+        {
+            return $next($request);
+        }
+
+        return redirect('/');
     }
 }
