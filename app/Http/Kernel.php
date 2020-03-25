@@ -19,8 +19,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \App\Http\Middleware\AdminMiddleware::class,
-        \App\Http\Middleware\StudentMiddleware::class,
+        // \App\Http\Middleware\AdminMiddleware::class,
+        // \App\Http\Middleware\StudentMiddleware::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'student' => \App\Http\Middleware\ConvertEmptyStringsToNull::class,
+        'student' => \App\Http\Middleware\StudentMiddleware::class,
     ];
 }

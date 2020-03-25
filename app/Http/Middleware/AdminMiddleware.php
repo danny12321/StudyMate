@@ -16,15 +16,11 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // if ($request->user() && $request->user()->type != 'admin')
-        // {
-        // }
-        // dd(Auth::user()->name);
-        // dd(
-        //     auth('api')->user()
-        // );
-        // dd($request->user());
-        // return new Response(view('dashboard.home'));
-        return $next($request);
+        if ($request->user() && Auth::user()->roles->pluck('role')[0] == "admin")
+        {
+            return $next($request);
+        }
+
+        return redirect('/');
     }
 }

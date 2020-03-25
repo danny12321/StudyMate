@@ -8,9 +8,8 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
-        // $this->middleware('web');
-        // $this->middleware('admin');
+        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function index() {
