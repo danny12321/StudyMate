@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+    
     // Get
     public function index()
     {
