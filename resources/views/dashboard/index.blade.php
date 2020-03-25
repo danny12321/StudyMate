@@ -22,6 +22,10 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
         </div> --}}
 
+        <div class="progress">
+            <div title="{{$currStudyPoints}} van de {{$maxStudyPoints}} behaald" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$currStudyPoints}}" aria-valuemin="0" aria-valuemax="{{$maxStudyPoints}}" style="width: 75%"></div>
+        </div>
+
         <div class="m-progress">
 
             @if ((($maxBlock - 1) % 4) + 1 !== 4)
@@ -61,12 +65,20 @@
                             <div class="m-progress__year__block__courses">
 
                                 @foreach($courses as $course)
-                                    @if($course->block == $block && $course->deadline_done)
+                                    @if($course->block == $block)
                                         <div class="m-progress__year__block__courses__course">
                                             <div class="m-progress__year__block__courses__course__heading">
                                                 <i class="far fa-check-circle"></i>
                                                 <h3>{{$course->name}}</h3>
                                             </div>
+
+                                            @if($course->grade)
+                                            <div class="m-progress__year__block__courses__course__points">
+                                                <span class="m-progress__year__block__courses__course__points__point">{{$course->grade}}</span>
+                                                <span>Cijfer</span>
+                                            </div>
+                                            @endif
+                                            
                                             <div class="m-progress__year__block__courses__course__points">
                                                 <span class="m-progress__year__block__courses__course__points__point">{{$course->study_points}}</span>
                                                 <span>studiepunten</span>

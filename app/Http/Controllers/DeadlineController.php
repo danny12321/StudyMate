@@ -78,13 +78,19 @@ class DeadlineController extends Controller
             'tags' => 'array'
         ]);
 
-        $name = $course->name . '-' . $course->id . '.zip';
-        $request->file('attachment')->storeAs('attachments', $name);
+        if ($request->file('attachment')) {
+            $name = $course->name . '-' . $course->id . '.zip';
+            $request->file('attachment')->storeAs('attachments', $name);
+
+            $course->update([
+                'path_to_zip' => $name
+            ]);
+        }
 
 
         $course->update([
-            'deadline'=>request('deadline'),
-            'path_to_zip' => $name
+            'deadline' => request('deadline'),
+            'grade' => request('grade'),
         ]);
 
         $course->tags()->sync(request('tags'));
@@ -92,7 +98,8 @@ class DeadlineController extends Controller
         return redirect()->route('deadline');
     }
 
-    public function done(Course $course) {
+    public function done(Course $course)
+    {
         $course->update([
             'deadline_done' => true
         ]);
@@ -100,7 +107,8 @@ class DeadlineController extends Controller
         return redirect()->route('deadline');
     }
 
-    public function download(Course $course) {
+    public function download(Course $course)
+    {
         $path = $course->path_to_zip;
 
         return Storage::download('attachments/' . $path);
