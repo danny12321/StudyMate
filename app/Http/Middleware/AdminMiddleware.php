@@ -20,13 +20,9 @@ class AdminMiddleware
         // {
         // }
         // dd(Auth::user()->name);
-        dd(
-            auth()->id() ?? '?',
-            Auth::id() ?? '?',
-            $request->user()->id ?? '?',
-            auth()->check(),
-            get_class(auth()->guard())
-        );
+        // dd(
+        //     auth('api')->user()
+        // );
         // dd($request->user());
         // return new Response(view('dashboard.home'));
         return $next($request);
