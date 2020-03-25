@@ -22,20 +22,9 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
         </div> --}}
 
-        <?php
-            $maxBlock = 0;
-            foreach ($courses as $course) {
-                if($course->block > $maxBlock) $maxBlock = $course->block;
-            }
-        ?>
-
         <div class="m-progress">
-
             
             @for ($block = $maxBlock; $block > 0; $block--)
-
-                
-
                 {{-- Clac the period --}}
                 @if ((($block - 1) % 4) + 1 == 4)
                     <div class="m-progress__year">
