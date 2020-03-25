@@ -15,7 +15,8 @@ class Course extends Model
 
     public function coordinator()
     {
-        return $this->hasOne(Teacher::class, 'id');
+
+        return $this->hasOne(Teacher::class, 'id', 'coordinator_id');
     }
 
     public function teachers()

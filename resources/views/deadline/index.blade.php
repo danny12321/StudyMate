@@ -28,7 +28,7 @@
 
     @if(count($courses))
         @foreach ($courses as $course)
-            <form action="{{route('deadline_coures_done', ['course'=> $course->id])}}" method="POST">
+            <form action="{{route('deadline_course_done', ['course'=> $course->id])}}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -47,14 +47,22 @@
                                 @endif
                             </a>
                         </h5>
+
+                        @if ($course->path_to_zip)
+                        <a href="{{route('deadline_course_download', ['course'=> $course->id])}}" download>download</a>
+                        @endif
                     </div>
 
                     <div class="col-md-2 text-right">
-                        @if($course->deadline_done)
-                            <h2><span class="badge badge-secondary badge-success">Done</span></h2>
-                        @else
-                            <button class="btn btn-primary" type="submit">Aftekenen</button>
-                        @endif
+                        <div class="d-flex">
+                            <a class="btn btn-link" href="{{route('deadline_course_edit', ['course'=> $course->id])}}">Wijzigen</a>
+                            
+                            @if($course->deadline_done)
+                                <h2><span class="badge badge-secondary badge-success">Done</span></h2>
+                            @else
+                                <button class="btn btn-primary" type="submit">Aftekenen</button>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 
@@ -63,7 +71,7 @@
                         <h3>Docenten</h3>
 
                         <div class="d-flex">
-                                <h5><span class="badge badge-danger">{{$course->coordinator->name}}</span></h5>
+                            <h5><span class="badge badge-danger">{{$course->coordinator->name}}</span></h5>
                             
                             @foreach ($course->teachers as $teacher)
                             <h5 class="ml-1">
@@ -74,10 +82,7 @@
                     </div>
                     
                     <div class="col-md-6">
-                        <div class="d-flex">
                             <h3>Tags</h3>
-                            <a class="btn btn-link" href="{{route('deadline_course_edit', ['course'=> $course->id])}}">Wijzigen</a>
-                        </div>
                         
                         <div class="d-flex">
                             @foreach ($course->tags as $tag)
