@@ -6,24 +6,10 @@
 
 @section('content')
     <div class="container">
-        {{-- <h1>Zelf kijken? Open hier de pagina</h1> --}}
-        {{-- <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ route('dashboard') }}&size=220x220&margin=10" alt="qrcode"> --}}
 
-        {{-- <h1>Voortgangsmeter</h1>
-
-        <h1>Voltooide vakken</h1>
-        <h2>Periode 1</h2>
-        <h3>Blok 1</h3>
-        <h3>Blok 2</h3>
-        <h3>Blok 3</h3>
-        <h3>Blok 4</h3>
-        
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-        </div> --}}
-
-        <div class="progress">
-            <div title="{{$currStudyPoints}} van de {{$maxStudyPoints}} behaald" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$currStudyPoints}}" aria-valuemin="0" aria-valuemax="{{$maxStudyPoints}}" style="width: 75%"></div>
+        <h1>Voortgangsmeter</h1>
+        <div class="progress" title="{{$currStudyPoints}} van de {{$maxStudyPoints}} behaald">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{$maxStudyPoints > 0 ? $currStudyPoints / $maxStudyPoints * 100 : 0}}%;"></div>
         </div>
 
         <div class="m-progress">
@@ -62,6 +48,10 @@
                             <div class="m-progress__year__block__period">
                                 <span>{{(($block - 1) % 4) + 1}}</span>
                             </div>
+                            <div class="m-progress__year__block__period">
+                                <span>Punten {{$pointsPerBlock[$block - 1]['achieved']}} / {{$pointsPerBlock[$block - 1]['total']}} </span>
+                            </div>
+
                             <div class="m-progress__year__block__courses">
 
                                 @foreach($courses as $course)
@@ -95,6 +85,12 @@
                 @endif
             @endfor
         </div>
+
+        <div class="text-center">
+            <h1>Zelf kijken? Open hier de pagina</h1>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ route('dashboard') }}&size=500x500&margin=10" alt="qrcode">
+        </div>
+
     </div>
 
     

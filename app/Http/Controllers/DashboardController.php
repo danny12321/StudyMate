@@ -8,16 +8,30 @@ use App\Course;
 class DashboardController extends Controller
 {
     public function index() {
-        $courses = Course::where('deadline_done', true)->get();
+        $courses = Course::all();
+        $coursesDone = $courses->where('deadline_done', true);
+        $currStudyPoints = $coursesDone->sum('study_points');
+        $maxStudyPoints = $courses->sum('study_points');
         $maxBlock = $courses->max('block');
-        $currStudyPoints = $courses->sum('study_points');
-        $maxStudyPoints = Course::sum('study_points');
+
+        $pointsPerBlock = array_fill(0, $maxBlock, [
+            'achieved' => 0,
+            'total' => 0
+        ]);
+
+        foreach($courses as $course) {
+            if($course->deadline_done) {
+                $pointsPerBlock[$course->block - 1]['achieved'] += $course->study_points;
+            }
+            $pointsPerBlock[$course->block - 1]['total'] += $course->study_points;
+        }
 
         return view('dashboard.index', [
-            'courses' => $courses,
+            'courses' => $coursesDone,
             'maxBlock' => $maxBlock,
             'currStudyPoints' => $currStudyPoints,
-            'maxStudyPoints' => $maxStudyPoints
+            'maxStudyPoints' => $maxStudyPoints,
+            'pointsPerBlock' => $pointsPerBlock
         ]);
     }
 }

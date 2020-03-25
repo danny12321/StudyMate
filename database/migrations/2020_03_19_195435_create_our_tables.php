@@ -59,7 +59,7 @@ class CreateOurTables extends Migration
             $table->unsignedBigInteger('coordinator_id');
             $table->unsignedBigInteger('assessment_type');
             $table->decimal('study_points', 4, 1);
-            $table->decimal('grade', 5, 3);
+            $table->decimal('grade', 5, 3)->nullable();
             $table->string('path_to_zip')->nullable();
             $table->integer('block');
             $table->timestamp('deadline')->nullable();
