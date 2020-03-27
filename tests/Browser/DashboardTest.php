@@ -13,11 +13,19 @@ class DashboardTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_if_progressmeter_renders()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Laravel');
+                    ->assertSee('Voortgangsmeter');
+        });
+    }
+
+    public function test_if_dashboardpage_shows()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                    ->assertSee('Dashboard');
         });
     }
 }
