@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Teacher;
 
 class TeacherTableSeeder extends Seeder
 {
@@ -12,12 +11,6 @@ class TeacherTableSeeder extends Seeder
      */
     public function run()
     {
-        Teacher::create([
-            'name' => 'Rick Meijer',
-        ]);
-
-        Teacher::create([
-            'name' => 'Gerard Joling',
-        ]);
+        //
     }
 }

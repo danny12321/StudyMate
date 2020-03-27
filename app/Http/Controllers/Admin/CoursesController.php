@@ -10,6 +10,12 @@ use App\AssessmentType;
 
 class CoursesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+    
     // Get
     public function index() {
         return view('admin.courses.index', [

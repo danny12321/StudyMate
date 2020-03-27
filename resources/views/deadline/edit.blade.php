@@ -20,6 +20,17 @@
             </div>
 
             <div class="form-group">
+                <label for="deadline">Grade</label>
+                <input value="{{$course->grade}}" class="form-control @error('grade') is-invalid @enderror" type="number" min="0" name="grade" id="grade">
+
+                @error('grade') 
+                    <div class="invalid-feedback">
+                        {{ $errors->first("grade") }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="tags">Tags</label>
                 <select class="form-control @error('tags') is-invalid @enderror" name="tags[]" id="tags" multiple>
                     @foreach($tags as $tag)
