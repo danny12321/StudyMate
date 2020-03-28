@@ -24,4 +24,17 @@ class TeacherTest extends TestCase
         // assert
         $this->assertEquals($name, $teacher->name);
     }
+
+    public function testTeacherNameIsEcrypted()
+    {
+        // arrange
+        $teacher = new Teacher();
+        $name = 'Harry';
+
+        // act
+        $teacher->name = $name;
+
+        // assert
+        $this->assertNotEquals($name, $teacher->getAttributes()['name']);
+    }
 }
