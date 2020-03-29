@@ -14,29 +14,29 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function testWhen_TeacherInputName_Expect_OutputName()
+    public function testWhen_UserInputName_Expect_OutputName()
     {
         // arrange
-        $teacher = new User();
-        $name = 'Harry';
+        $user = new User();
+        $name = 'Age';
 
         // act
-        $teacher->name = $name;
+        $user->name = $name;
 
         // assert
-        $this->assertEquals($name, $teacher->name);
+        $this->assertEquals($name, $user->name);
     }
 
-    public function testWhen_TeacherName_Expect_EncryptedName()
+    public function testWhen_UserName_Expect_EncryptedName()
     {
         // arrange
-        $teacher = new User();
-        $name = 'Harry';
+        $user = new User();
+        $name = 'Age';
 
         // act
-        $teacher->name = $name;
+        $user->name = $name;
 
         // assert
-        $this->assertNotEquals($name, $teacher->getAttributes()['name']);
+        $this->assertNotEquals($name, $user->getAttributes()['name']);
     }
 }
