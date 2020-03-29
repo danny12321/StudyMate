@@ -13,7 +13,7 @@ class DashboardTest extends DuskTestCase
      *
      * @return void
      */
-    public function test_if_progressmeter_renders()
+    public function test_Progressmeter_Renders()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -21,7 +21,7 @@ class DashboardTest extends DuskTestCase
         });
     }
 
-    public function test_if_dashboardpage_shows()
+    public function test_Dashboardpage_Shows()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')

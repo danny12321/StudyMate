@@ -13,7 +13,7 @@ class DeadlinepageTest extends DuskTestCase
      *
      * @return void
      */
-    public function test_if_deadlinelogin_gives_error()
+    public function test_Deadlinelogin_WithWrongLogin_GivesError()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/deadline')
@@ -24,7 +24,7 @@ class DeadlinepageTest extends DuskTestCase
         });
     }
     
-    public function test_if_deadlinelogin_works()
+    public function test_Deadlinelogin_WithGoodLogin_Works()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/deadline')

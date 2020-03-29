@@ -15,7 +15,7 @@ class AdminpageTest extends DuskTestCase
      */
 
      
-    public function test_if_adminlogin_gives_error()
+    public function test_Adminlogin_WithWrongLogin_GivesError()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin')
@@ -26,7 +26,7 @@ class AdminpageTest extends DuskTestCase
         });
     }
 
-    public function test_if_adminlogin_works()
+    public function test_Adminlogin_WithGoodLogin_Works()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin')
