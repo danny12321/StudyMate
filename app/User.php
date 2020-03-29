@@ -40,4 +40,12 @@ class User extends Authenticatable
     public function roles() {
         return $this->belongsToMany(Role::class);
     }
+
+    public function setNameAttribute($value) {
+        $this->attributes['name'] = encrypt($value);
+    }
+
+    public function getNameAttribute($value) {
+        return decrypt($value);
+    }
 }
